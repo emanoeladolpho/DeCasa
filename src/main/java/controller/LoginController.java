@@ -48,7 +48,6 @@ public class LoginController {
             stage = (Stage)btnConfirmarLogin.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("/telaPrincipal.fxml"));
         }
-
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();

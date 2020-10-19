@@ -26,8 +26,6 @@ public class CriarContaController {
     @FXML
     private Hyperlink voltarTelaLogin;
 
-
-
     public void voltarTelaLogin(ActionEvent event) throws IOException {
         Stage stage = null;
         Parent root = null;

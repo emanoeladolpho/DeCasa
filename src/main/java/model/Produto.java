@@ -2,37 +2,37 @@ package model;
 
 public class Produto {
 
-    private String code;
-    private String name;
-    private double price;
+    private String codigo;
+    private String nome;
+    private double preco;
 
-    public Produto(String code, String name, double price) {
-        this.code = code;
-        this.name = name;
-        this.price = price;
+    public Produto(String codigo, String nome, double preco) {
+        this.codigo = codigo;
+        this.nome = nome;
+        this.preco = preco;
     }
 
-    public String getCode() {
-        return code;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public double getPrice() {
-        return price;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setPreco(double preco) {
+        this.preco = preco;
     }
 }
