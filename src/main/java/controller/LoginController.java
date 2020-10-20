@@ -1,16 +1,13 @@
 package controller;
 
-import javafx.collections.transformation.TransformationList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,7 +22,6 @@ public class LoginController {
     private Button btnConfirmarLogin;
     @FXML
     private Hyperlink criarConta;
-
 
     // Chamando Scene
     public void criarConta(ActionEvent event) throws IOException {

@@ -1,12 +1,12 @@
 package application;
 
-import controller.ProdutoController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import model.Produto;
+import model.dao.ProdutosDAO;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -29,29 +29,25 @@ public class Main extends Application {
         Scanner entrada = new Scanner(System.in);
         double valorTotal = 0;
 
-        ProdutoController p1 = new ProdutoController(new Produto("123","Cimento",20.0));
-        ProdutoController p2 = new ProdutoController(new Produto("321","Tijolo",0.15));
-        ProdutoController p3 = new ProdutoController(new Produto("231","Telha",1.15));
+        ProdutosDAO produtodao = new ProdutosDAO();
+        ArrayList<Produto> produtos = new ArrayList<Produto>();
+        produtos = produtodao.getProdutos();
 
-        ArrayList<ProdutoController> produtos = new ArrayList<ProdutoController>();
-        produtos.add(p1);
-        produtos.add(p2);
-        produtos.add(p3);
+        ArrayList<Produto> listaDeCompras = new ArrayList<Produto>();
 
-        ArrayList<ProdutoController> listaDeCompras = new ArrayList<ProdutoController>();
-
+        /*
         for(int i = 0; i<3; i++) {
-
             System.out.println("Qual o produto está sendo comprado: ");
             String produtoCod = entrada.nextLine();
 
-            for (ProdutoController x : produtos) {
-                if (x.getProdutoCodigo().equals(produtoCod)) {
+            for (Produto x : produtos) {
+                if (x.getCodigo().equals(produtoCod)) {
                     listaDeCompras.add(x);
-                    valorTotal += x.getProdutoPreco();
+                    valorTotal += x.getPreco();
                 }
             }
             System.out.println("Valor total da compra: " + valorTotal);
         }
+             */
     }
 }
