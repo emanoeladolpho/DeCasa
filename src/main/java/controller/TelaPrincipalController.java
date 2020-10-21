@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.Produto;
 import model.dao.ProdutosDAO;
@@ -30,6 +32,8 @@ public class TelaPrincipalController {
     private Label lblValorUnitario;
     @FXML
     private Label lblValorTotal;
+    @FXML
+    private ImageView imageView;
 
     // ATRIBUTOS DA TABELA FINAL DA COMPRA
     @FXML
@@ -69,6 +73,7 @@ public class TelaPrincipalController {
             if(codigoProduto.getText().equals(x.getCodigo())){
                 lblCodigo.setText(x.getCodigo());
                 lblValorUnitario.setText("" + x.getPreco());
+                imageView.setImage(new Image("/images/Arroz.jpg"));
             }
         }
     }
@@ -82,6 +87,6 @@ public class TelaPrincipalController {
     }
 
     public void adicionarProduto(){
-        
+
     }
 }
