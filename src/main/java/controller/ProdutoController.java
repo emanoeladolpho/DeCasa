@@ -1,6 +1,6 @@
 package controller;
 
-import model.Produto;
+import model.entities.Produto;
 
 public class ProdutoController {
 

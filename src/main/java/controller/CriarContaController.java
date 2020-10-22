@@ -31,7 +31,7 @@ public class CriarContaController {
         Parent root = null;
         if(event.getSource() == voltarTelaLogin){
             stage = (Stage) voltarTelaLogin.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/FXML/login.fxml"));
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);

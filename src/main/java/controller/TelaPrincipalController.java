@@ -3,25 +3,27 @@ package controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import model.Produto;
 import model.dao.ProdutosDAO;
 import model.entities.Pedido;
+import model.entities.Produto;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class TelaPrincipalController {
-
+public class TelaPrincipalController implements Initializable {
     @FXML
     private Hyperlink sair;
     @FXML
-    private Button buscarProduto;
+    private Button btnbuscarProdutos;
     @FXML
     private TextField codigoProduto;
     @FXML
@@ -33,7 +35,31 @@ public class TelaPrincipalController {
     @FXML
     private Label lblValorTotal;
     @FXML
+    private Label lblTotalDoPedido;
+    @FXML
     private ImageView imageView;
+    @FXML
+    private Label lblAtalhosTeclado;
+    @FXML
+    private Button btnAguardar;
+    @FXML
+    private Button btnCancelar;
+    @FXML
+    private Button btnFinalizarVenda;
+    @FXML
+    private Button btnTeste; // ------------------------- BOTAO DE TESTE PARA CAPTURAR DE TECLA -------------------
+    @FXML
+    private Label lblTipoCliente;
+    @FXML
+    private Label lblVendedor;
+    @FXML
+    private Label lblMarcacaoNomeProduto;
+    @FXML
+    private Label lblMarcacaoCodigoProduto;
+    @FXML
+    private Label lblMarcacaoValUnit;
+    @FXML
+    private Label lblMarcacaoValTotal;
 
     // ATRIBUTOS DA TABELA FINAL DA COMPRA
     @FXML
@@ -48,6 +74,11 @@ public class TelaPrincipalController {
     ProdutosDAO produtodao = new ProdutosDAO();
 
 
+    //POP UP PARA INSERÇÃO DE CPF
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+    }
+
     // CRIAR LISTA DE PRODUTOS
     public ArrayList<Produto> criar(){
         produtos = produtodao.getProdutos();
@@ -60,7 +91,7 @@ public class TelaPrincipalController {
 
         if(event.getSource() == sair){
             stage = (Stage) sair.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/FXML/login.fxml"));
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -87,6 +118,6 @@ public class TelaPrincipalController {
     }
 
     public void adicionarProduto(){
-
     }
+
 }

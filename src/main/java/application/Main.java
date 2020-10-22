@@ -4,9 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import model.Produto;
 import model.dao.ProdutosDAO;
+import model.entities.Produto;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -18,10 +20,18 @@ public class Main extends Application {
 
         @Override
         public void start(Stage primaryStage) throws Exception{
-            Parent root = FXMLLoader.load(getClass().getResource("/login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/FXML/telaPrincipal.fxml"));
             primaryStage.setTitle("Sistema DeCasa");
-            primaryStage.setScene(new Scene(root, 300, 275));
+            Scene scene = new Scene(root,300,275);
+            primaryStage.setScene(scene);
+            scene.getStylesheets().add("/telaPrincipal.css");
+            //primaryStage.setScene(new Scene(root, 300, 275));
             primaryStage.show();
+            scene.setOnKeyPressed(e -> {
+                if(e.getCode() == KeyCode.F1){
+                    System.out.println("VOCÊ PRESSIONAL A TECLADA [F1]");
+                }
+            });
         }
 
     public static void main(String []args){

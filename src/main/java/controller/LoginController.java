@@ -30,7 +30,7 @@ public class LoginController {
 
         if(event.getSource() == criarConta){
             stage = (Stage)criarConta.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/criarConta.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/FXML/criarConta.fxml"));
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -42,7 +42,7 @@ public class LoginController {
         Parent root = null;
         if(event.getSource() == btnConfirmarLogin){
             stage = (Stage)btnConfirmarLogin.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/telaPrincipal.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/FXML/telaPrincipal.fxml"));
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -1,0 +1,81 @@
+.root{
+    -fx-background-color: #f0f0f0;
+}
+
+#btnConfirmarLogin{
+    -fx-background-color: #ADD8E6;
+}
+
+#login {
+    -fx-text-fill: black;
+}
+
+#lblTotalDoPedido{
+    -fx-background-color: #ADD8E6;
+}
+
+#atalhosTeclado{
+    -fx-background-color: #c0c0c0;
+    -fx-position-shape: fixed;
+    -fx-left: 0;
+    -fx-bottom : 0;
+    -fx-width : 100%;
+    -fx-color-label-visible: white;
+    -fx-text-alignment: center;
+}
+
+#btnAguardar{
+    -fx-background-color: #ffff00;
+    -fx-border-radius: 14px;
+    -fx-padding: 6px 8px;
+    -fx-padding: 6px 9px;
+}
+
+#btnAguardar:hover{
+    -fx-background-color: #e5e619;
+}
+
+#btnCancelar{
+    -fx-background-color: #ff4040;
+    -fx-border-radius: 11px;
+    -fx-padding: 6px 9px;
+}
+
+#btnCancelar:hover{
+    -fx-background-color: #ff0000;
+}
+
+#btnFinalizarVenda{
+    -fx-background-color: #99e599;
+    -fx-cursor: pointer;
+}
+
+#btnFinalizarVenda:hover{
+    -fx-background-color: #4ee44e;
+}
+
+#lblTipoCliente,lblVendedor{
+    -fx-background-color: #87cefa;
+    -fx-padding: 6px 9px;
+}
+
+#lblTipoCliente:hover{
+    -fx-background-color: #3db0f7;
+}
+
+#lblVendedor{
+    -fx-background-color: #87cefa;
+    -fx-padding: 3px 9px;
+}
+
+#lblVendedor:hover{
+    -fx-background-color: #3db0f7;
+}
+
+#lblMarcacaoCodigoProduto{
+    -fx-font-family: Helvetica, Times, Serif;
+}
+
+#codigoProduto{
+    -fx-arc-width: 20%;
+}

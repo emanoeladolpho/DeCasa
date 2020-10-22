@@ -14,13 +14,12 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="579.0" prefWidth="870.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaPrincipalController">
    <children>
       <Hyperlink fx:id="sair" layoutX="838.0" layoutY="2.0" onAction="#sair" text="Sair" />
-      <Button fx:id="buscarProdutos" layoutX="311.0" layoutY="71.0" mnemonicParsing="false" onAction="#buscarProdutos" text="Buscar" />
-      <Label layoutX="22.0" layoutY="48.0" text="Insira o cdigo do produto: " />
-      <TextField fx:id="codigoProduto" layoutX="23.0" layoutY="71.0" prefHeight="24.0" prefWidth="278.0" />
-      <AnchorPane layoutX="545.0" layoutY="48.0" prefHeight="314.0" prefWidth="311.0">
+      <Button fx:id="btnbuscarProdutos" layoutX="311.0" layoutY="71.0" mnemonicParsing="false" onAction="#buscarProdutos" text="Buscar" />
+      <Label layoutX="26.0" layoutY="48.0" text="LOCALIZAR PRODUTO" />
+      <TextField fx:id="codigoProduto" layoutX="26.0" layoutY="71.0" prefHeight="24.0" prefWidth="278.0" />
+      <AnchorPane layoutX="545.0" layoutY="26.0" prefHeight="314.0" prefWidth="311.0">
          <children>
-            <Label layoutX="14.0" layoutY="6.0" text="Cliente: Ao consumidor" textFill="#1a1818" />
-            <Label layoutX="14.0" layoutY="22.0" text="Vendedor: " />
+            <Label fx:id="lblTipoCliente" layoutX="7.0" layoutY="2.0" prefHeight="24.0" prefWidth="177.0" text="Cliente: Ao consumidor" textFill="#1a1818" />
             <TableView fx:id="tabelaCompras" layoutY="51.0" prefHeight="263.0" prefWidth="311.0">
               <columns>
                 <TableColumn fx:id="quantidadeFinal" prefWidth="132.0" text="Quantidade" />
@@ -28,53 +27,55 @@
                   <TableColumn fx:id="precoFinal" prefWidth="85.0" text="Preço" />
               </columns>
             </TableView>
+            <Label fx:id="lblVendedor" layoutX="7.0" layoutY="30.0" text="Vendedor: " />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="545.0" layoutY="381.0" prefHeight="200.0" prefWidth="311.0">
+      <AnchorPane layoutX="545.0" layoutY="353.0" prefHeight="181.0" prefWidth="311.0">
          <children>
             <Label layoutX="105.0" layoutY="6.0" text="Total do pedido" />
             <Label fx:id="lblTotalDoPedido" layoutX="58.0" layoutY="38.0" prefHeight="36.0" prefWidth="196.0" text="                       " />
-            <Button layoutX="81.0" layoutY="142.0" mnemonicParsing="false" text="FINALIIZAR VENDA" />
-            <Button layoutX="58.0" layoutY="100.0" mnemonicParsing="false" text="AGUARDAR" />
-            <Button layoutX="156.0" layoutY="100.0" mnemonicParsing="false" text="CANCELAR" />
+            <Button fx:id="btnFinalizarVenda" layoutX="60.0" layoutY="128.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="189.0" text="FINALIIZAR VENDA" />
+            <Button fx:id="btnAguardar" layoutX="62.0" layoutY="91.0" mnemonicParsing="false" text="AGUARDAR" />
+            <Button fx:id="btnCancelar" layoutX="160.0" layoutY="91.0" mnemonicParsing="false" text="CANCELAR" />
          </children>
       </AnchorPane>
       <Label fx:id="lblCodigo" layoutX="332.0" layoutY="200.0" text="CODIGO DO PRODUTO" />
       <Label fx:id="lblValorTotal" layoutX="305.0" layoutY="363.0" text="VALOR TOTAL (VAL.UNI * QTD)" />
       <Label fx:id="lblValorUnitario" layoutX="330.0" layoutY="308.0" prefHeight="16.0" prefWidth="152.0" text="VALOR UNITARIO" />
-      <Label layoutX="130.0" layoutY="360.0" text="Valor total">
+      <Label fx:id="lblMarcacaoValTotal" layoutX="130.0" layoutY="360.0" text="Valor total">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="116.0" layoutY="305.0" text="Valor unitario">
+      <Label fx:id="lblMarcacaoValUnit" layoutX="116.0" layoutY="305.0" text="Valor unitario">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="124.0" layoutY="251.0" text="Quantidade">
+      <Label fx:id="lblMarcacaoQtdProduto" layoutX="124.0" layoutY="251.0" text="Quantidade">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="133.0" layoutY="197.0" text="Codigo">
+      <Label fx:id="lblMarcacaoCodigoProduto" layoutX="133.0" layoutY="197.0" text="Codigo">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <TextField fx:id="quantidade" layoutX="330.0" layoutY="249.0" prefHeight="26.0" prefWidth="122.0" />
       <Button layoutX="458.0" layoutY="249.0" mnemonicParsing="false" onAction="#multiplicarQuantidade" text="OK" />
-      <Button fx:id="adicionarProduto" layoutX="311.0" layoutY="406.0" mnemonicParsing="false" onAction="#adicionarProduto" prefHeight="26.0" prefWidth="209.0" text="ADICIONAR PRODUTO" textFill="#0d0d0d" />
+      <Button fx:id="adicionarProduto" layoutX="311.0" layoutY="406.0" mnemonicParsing="false" onAction="#adicionarProduto" prefHeight="26.0" prefWidth="209.0" text="ADICIONAR PRODUTO" textFill="#141414" />
       <ImageView fx:id="fotoProduto" fitHeight="102.0" fitWidth="113.0" layoutX="14.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/Arroz.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="132.0" layoutY="146.0" text="Nome: ">
+      <Label fx:id="lblmarcacaoNomeProduto" layoutX="132.0" layoutY="146.0" text="Nome: ">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
       <Label layoutX="339.0" layoutY="149.0" text="NOME DO PRODUTO" />
+      <Label fx:id="lblAtalhosTeclado" layoutX="49.0" layoutY="547.0" prefHeight="26.0" prefWidth="768.0" text="F1 = CPF | F2 = ACAO 2 | F3 ACAO 3 | F4 ACAO 4 | F5 = ACAO 5 | F6 = Finalizar Venda | F7 ACAO 7 | F8 = ACAO 8 " />
    </children>
 </AnchorPane>
