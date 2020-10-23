@@ -48,6 +48,7 @@
 #btnFinalizarVenda{
     -fx-background-color: #99e599;
     -fx-cursor: pointer;
+    -fx-border-radius: 42px;
 }
 
 #btnFinalizarVenda:hover{
@@ -61,6 +62,7 @@
 
 #lblTipoCliente:hover{
     -fx-background-color: #3db0f7;
+    -fx-cursor: pointer;
 }
 
 #lblVendedor{
@@ -70,12 +72,28 @@
 
 #lblVendedor:hover{
     -fx-background-color: #3db0f7;
+    -fx-cursor: pointer;
 }
 
 #lblMarcacaoCodigoProduto{
     -fx-font-family: Helvetica, Times, Serif;
 }
 
+#lblTotalDoPedido{
+    -fx-text-alignment: center;
+    -fx-background-color: grey;
+}
+
 #codigoProduto{
     -fx-arc-width: 20%;
+}
+
+#adicionarProduto{
+    -fx-background-color: #87cefa;
+    -fx-cursor: auto;
+}
+
+#adicionarProduto:hover{
+    -fx-background-color: #00CDCD;
+    -fx-cursor: auto;
 }

@@ -4,11 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 import model.dao.ProdutosDAO;
 import model.entities.Produto;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,6 +18,9 @@ public class Main extends Application {
 
         @Override
         public void start(Stage primaryStage) throws Exception{
+            Stage stage;
+            Parent root2;
+
             Parent root = FXMLLoader.load(getClass().getResource("/FXML/telaPrincipal.fxml"));
             primaryStage.setTitle("Sistema DeCasa");
             Scene scene = new Scene(root,300,275);
@@ -28,9 +29,44 @@ public class Main extends Application {
             //primaryStage.setScene(new Scene(root, 300, 275));
             primaryStage.show();
             scene.setOnKeyPressed(e -> {
-                if(e.getCode() == KeyCode.F1){
-                    System.out.println("VOCÊ PRESSIONAL A TECLADA [F1]");
+                switch (e.getCode()){
+                    case F1:
+                        System.out.println("VOCE PRESSIONOU A TECLA [F1]");
+                    break;
+
+                    case F2:
+                        System.out.println("VOCÊ PRESSIONAL A TECLA [F2]");
+                    break;
+
+                    case F3:
+                        System.out.println("VOCE PRESSIONAL A TECLA [F3]");
+                    break;
+
+                    case F4:
+
+                    break;
+
+                    case F5:
+
+                    break;
+
+                    case F6:
+
+                    break;
+
+                    case F7:
+                        System.out.println("Lista de todos os atalhos");
+                    break;
+
+                    default:
+                        System.out.println("ATALHO NÃO EXISTENTE");
+                    break;
                 }
+                /*
+                if(e.getCode() == KeyCode.F1){
+                    System.out.println("VOCÊ PRESSIONAL A TECLA [F1]");
+                }
+                 */
             });
         }
 

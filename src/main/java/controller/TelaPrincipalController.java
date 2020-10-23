@@ -104,7 +104,7 @@ public class TelaPrincipalController implements Initializable {
             if(codigoProduto.getText().equals(x.getCodigo())){
                 lblCodigo.setText(x.getCodigo());
                 lblValorUnitario.setText("" + x.getPreco());
-                imageView.setImage(new Image("/images/Arroz.jpg"));
+                imageView.setImage(new Image("/images/ArtelliJ roz.jpg"));
             }
         }
     }
@@ -113,6 +113,7 @@ public class TelaPrincipalController implements Initializable {
         for (Produto x: produtos) {
             if(codigoProduto.getText().equals(x.getCodigo())){
                 lblValorTotal.setText("" + x.getPreco()*Double.parseDouble(quantidade.getText()));
+                lblTotalDoPedido.setText("" + x.getPreco()*Double.parseDouble(quantidade.getText()));
             }
         }
     }
