@@ -22,9 +22,9 @@
             <Label fx:id="lblTipoCliente" layoutX="7.0" layoutY="2.0" prefHeight="24.0" prefWidth="177.0" text="Cliente: Ao consumidor" textFill="#1a1818" />
             <TableView fx:id="tabelaCompras" layoutY="51.0" prefHeight="263.0" prefWidth="311.0">
               <columns>
-                <TableColumn fx:id="quantidadeFinal" prefWidth="132.0" text="Quantidade" />
-                <TableColumn fx:id="produtotFinal" prefWidth="93.0" text="Produto" />
-                  <TableColumn fx:id="precoFinal" prefWidth="85.0" text="Preço" />
+                <TableColumn fx:id="colunaQuantidade" prefWidth="132.0" text="Quantidade" />
+                <TableColumn fx:id="colunaProduto" prefWidth="93.0" text="Produto" />
+                  <TableColumn fx:id="colunaPreco" prefWidth="85.0" text="Preco" />
               </columns>
             </TableView>
             <Label fx:id="lblVendedor" layoutX="7.0" layoutY="30.0" text="Vendedor: " />

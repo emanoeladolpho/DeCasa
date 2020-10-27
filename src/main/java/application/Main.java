@@ -4,9 +4,11 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.dao.ProdutosDAO;
 import model.entities.Produto;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,6 +22,7 @@ public class Main extends Application {
         public void start(Stage primaryStage) throws Exception{
             Stage stage;
             Parent root2;
+            Button buttonTeste; // Para mudança de scene após um teclada ser pressionada
 
             Parent root = FXMLLoader.load(getClass().getResource("/FXML/telaPrincipal.fxml"));
             primaryStage.setTitle("Sistema DeCasa");

@@ -3,12 +3,12 @@ package model.entities;
 public class Pedido {
     private int quantidade;
     private String produto;
-    private double preço;
+    private Double preco;
 
-    public Pedido(int quantidade, String produto, double preço) {
+    public Pedido(int quantidade, String produto, Double preco) {
         this.quantidade = quantidade;
         this.produto = produto;
-        this.preço = preço;
+        this.preco = preco;
     }
 
     public int getQuantidade() {
@@ -27,11 +27,11 @@ public class Pedido {
         this.produto = produto;
     }
 
-    public double getPreço() {
-        return preço;
+    public double getPreco() {
+        return preco;
     }
 
-    public void setPreço(double preço) {
-        this.preço = preço;
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 }

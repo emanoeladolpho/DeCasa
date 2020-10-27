@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,13 +9,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import model.dao.ProdutosDAO;
 import model.entities.Pedido;
 import model.entities.Produto;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -47,8 +49,6 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private Button btnFinalizarVenda;
     @FXML
-    private Button btnTeste; // ------------------------- BOTAO DE TESTE PARA CAPTURAR DE TECLA -------------------
-    @FXML
     private Label lblTipoCliente;
     @FXML
     private Label lblVendedor;
@@ -60,25 +60,30 @@ public class TelaPrincipalController implements Initializable {
     private Label lblMarcacaoValUnit;
     @FXML
     private Label lblMarcacaoValTotal;
+    @FXML
+    private TableView<Pedido> tabelaCompras = new TableView<Pedido>();
+    @FXML
+    private TableColumn<Pedido,Integer> colunaQuantidade;
+    @FXML
+    private TableColumn<Pedido,String> colunaProduto;
+    @FXML
+    private TableColumn<Pedido, Float> colunaPreco;
 
-    // ATRIBUTOS DA TABELA FINAL DA COMPRA
-    @FXML
-    private TableView<Pedido> tabelaCompra;
-    @FXML
-    public TableColumn<Pedido,Integer> quantidadePedido;
-    @FXML
-    public TableColumn<Pedido,String> nomeProduto;
-    @FXML
-    public TableColumn<Pedido,Double> precoProduto;
     ArrayList<Produto> produtos = new ArrayList<Produto>();
     ProdutosDAO produtodao = new ProdutosDAO();
 
+    ObservableList<Pedido> data = FXCollections.observableArrayList(
+            new Pedido(2,"Arroz",   24.3),
+            new Pedido(3,"Feijão",22.1)
+    );
 
-    //POP UP PARA INSERÇÃO DE CPF
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        colunaProduto.setCellValueFactory(new PropertyValueFactory<>("produto"));
+        colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
+        tabelaCompras.setItems(data);
     }
-
     // CRIAR LISTA DE PRODUTOS
     public ArrayList<Produto> criar(){
         produtos = produtodao.getProdutos();
@@ -104,7 +109,7 @@ public class TelaPrincipalController implements Initializable {
             if(codigoProduto.getText().equals(x.getCodigo())){
                 lblCodigo.setText(x.getCodigo());
                 lblValorUnitario.setText("" + x.getPreco());
-                imageView.setImage(new Image("/images/ArtelliJ roz.jpg"));
+                imageView.setImage(new Image("/images/Arroz.jpg"));
             }
         }
     }
@@ -119,6 +124,10 @@ public class TelaPrincipalController implements Initializable {
     }
 
     public void adicionarProduto(){
+        data.add(new Pedido(Integer.parseInt(quantidade.getText()),lblCodigo.getText(),Double.parseDouble(lblValorTotal.getText())));
+        //tabelaCompras.setItems(data);
+        codigoProduto.clear();
+        quantidade.clear();
     }
 
 }
