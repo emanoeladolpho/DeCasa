@@ -39,11 +39,11 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private Label lblTotalDoPedido;
     @FXML
-    private ImageView imageView;
+    private ImageView imageView =  new ImageView();
     @FXML
     private Label lblAtalhosTeclado;
     @FXML
-    private Button btnAguardar;
+    private Button btnAguardar; // REMOVER DEPOIS
     @FXML
     private Button btnCancelar;
     @FXML
@@ -61,6 +61,8 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private Label lblMarcacaoValTotal;
     @FXML
+    private Label lblNomeProduto;
+    @FXML
     private TableView<Pedido> tabelaCompras = new TableView<Pedido>();
     @FXML
     private TableColumn<Pedido,Integer> colunaQuantidade;
@@ -72,13 +74,12 @@ public class TelaPrincipalController implements Initializable {
     ArrayList<Produto> produtos = new ArrayList<Produto>();
     ProdutosDAO produtodao = new ProdutosDAO();
 
-    ObservableList<Pedido> data = FXCollections.observableArrayList(
-            new Pedido(2,"Arroz",   24.3),
-            new Pedido(3,"Feijão",22.1)
-    );
+    // ONDE OS PRODUTOS DA COMPRA FICAM ARMAZENADOS
+    ObservableList<Pedido> data = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        quantidade.setText("1");
         colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         colunaProduto.setCellValueFactory(new PropertyValueFactory<>("produto"));
         colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
@@ -107,8 +108,9 @@ public class TelaPrincipalController implements Initializable {
         criar();
         for (Produto x: produtos) {
             if(codigoProduto.getText().equals(x.getCodigo())){
+                lblNomeProduto.setText(x.getNome());
                 lblCodigo.setText(x.getCodigo());
-                lblValorUnitario.setText("" + x.getPreco());
+                lblValorUnitario.setText(String.valueOf(x.getPreco()));
                 imageView.setImage(new Image("/images/Arroz.jpg"));
             }
         }
@@ -117,17 +119,35 @@ public class TelaPrincipalController implements Initializable {
     public void multiplicarQuantidade(){
         for (Produto x: produtos) {
             if(codigoProduto.getText().equals(x.getCodigo())){
-                lblValorTotal.setText("" + x.getPreco()*Double.parseDouble(quantidade.getText()));
-                lblTotalDoPedido.setText("" + x.getPreco()*Double.parseDouble(quantidade.getText()));
+                lblValorTotal.setText(String.valueOf(x.getPreco()*Double.parseDouble(quantidade.getText())));
             }
         }
     }
 
     public void adicionarProduto(){
-        data.add(new Pedido(Integer.parseInt(quantidade.getText()),lblCodigo.getText(),Double.parseDouble(lblValorTotal.getText())));
-        //tabelaCompras.setItems(data);
+        double valorTotalDoPedido = 0;
+        //adicionando itens na lista de compra dinamicamente
+        data.add(new Pedido(Integer.parseInt(quantidade.getText()),lblNomeProduto.getText(),
+                Double.parseDouble(lblValorTotal.getText())));
+
+        // Fazendo a soma total do pedido
+        for(int i = 0; i < tabelaCompras.getItems().size(); i++){
+            valorTotalDoPedido += tabelaCompras.getItems().get(i).getPreco();
+            lblTotalDoPedido.setText(String.valueOf(valorTotalDoPedido));
+        }
+        lblNomeProduto.setText("");
         codigoProduto.clear();
         quantidade.clear();
+        lblCodigo.setText("");
+        lblValorUnitario.setText("");
+        lblValorTotal.setText("");
+    }
+
+    public void finalizarVenda(){
+    }
+
+
+    public void cancelar(){
     }
 
 }
