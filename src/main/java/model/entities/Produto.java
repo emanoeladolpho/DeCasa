@@ -2,23 +2,30 @@ package model.entities;
 
 public class Produto {
 
-    private String codigo;
+    private int id;
     private String nome;
     private double preco;
-    private Vendedor vendedor;
+    private String codigoBarra;
+    private int quantidadeEstoque;
 
-    public Produto(String codigo, String nome, double preco) {
-        this.codigo = codigo;
+    public Produto(){
+
+    }
+
+    public Produto(int id, String nome, double preco, String codigoBarra, int quantidadeEstoque) {
+        this.id = id;
         this.nome = nome;
         this.preco = preco;
+        this.codigoBarra = codigoBarra;
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public int getId() {
+        return id;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -35,5 +42,21 @@ public class Produto {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public String getCodigoBarra() {
+        return codigoBarra;
+    }
+
+    public void setCodigoBarra(String codigoBarra) {
+        this.codigoBarra = codigoBarra;
+    }
+
+    public int getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 }
