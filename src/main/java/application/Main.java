@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import model.dao.ProdutosDAO;
 import model.entities.Produto;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -26,10 +25,10 @@ public class Main extends Application {
 
             Parent root = FXMLLoader.load(getClass().getResource("/FXML/telaPrincipal.fxml"));
             primaryStage.setTitle("Sistema DeCasa");
-            Scene scene = new Scene(root,300,275);
+            Scene scene = new Scene(root,900,600);
             primaryStage.setScene(scene);
             scene.getStylesheets().add("/telaPrincipal.css");
-            //primaryStage.setScene(new Scene(root, 300, 275));
+            //primaryStage.setScene(new Scene(root, 500, 275));
             primaryStage.show();
             scene.setOnKeyPressed(e -> {
                 switch (e.getCode()){

@@ -10,12 +10,12 @@ public class ProdutoController {
         this.model = model;
     }
 
-    public String getProdutoCodigo(){
-        return this.model.getCodigo();
+    public int getProdutoCodigo(){
+        return this.model.getId();
     }
 
-    public void setProdutoCodigo(String codigo){
-        this.model.setCodigo(codigo);
+    public void setProdutoCodigo(int id){
+        this.model.setId(id);
     }
 
     public String getProdutoNome(){
@@ -33,6 +33,4 @@ public class ProdutoController {
     public void setProdutoPreco(double preco){
         this.model.setPreco(preco);
     }
-
-
 }

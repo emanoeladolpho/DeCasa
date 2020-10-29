@@ -18,12 +18,16 @@ import model.entities.Pedido;
 import model.entities.Produto;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class TelaPrincipalController implements Initializable {
     @FXML
     private Hyperlink sair;
+    @FXML
+    private Hyperlink acessarDataBase;
     @FXML
     private Button btnbuscarProdutos;
     @FXML
@@ -71,6 +75,9 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private TableColumn<Pedido, Float> colunaPreco;
 
+    DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/yyy:mm:ss");
+    LocalDateTime agora = LocalDateTime.now();
+
     ArrayList<Produto> produtos = new ArrayList<Produto>();
     ProdutosDAO produtodao = new ProdutosDAO();
 
@@ -91,25 +98,13 @@ public class TelaPrincipalController implements Initializable {
         return produtos;
     }
 
-    public void sair(ActionEvent event) throws IOException {
-        Stage stage = null;
-        Parent root = null;
-
-        if(event.getSource() == sair){
-            stage = (Stage) sair.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/FXML/login.fxml"));
-        }
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
     public void buscarProdutos(ActionEvent event){
+        System.out.println(agora);
         criar();
         for (Produto x: produtos) {
-            if(codigoProduto.getText().equals(x.getCodigo())){
+            if(codigoProduto.getText().equals(x.getId())){ // talvez converter o tipo depois
                 lblNomeProduto.setText(x.getNome());
-                lblCodigo.setText(x.getCodigo());
+                lblCodigo.setText(String.valueOf(x.getId()));
                 lblValorUnitario.setText(String.valueOf(x.getPreco()));
                 imageView.setImage(new Image("/images/Arroz.jpg"));
             }
@@ -118,7 +113,7 @@ public class TelaPrincipalController implements Initializable {
 
     public void multiplicarQuantidade(){
         for (Produto x: produtos) {
-            if(codigoProduto.getText().equals(x.getCodigo())){
+            if(codigoProduto.getText().equals(x.getId())){
                 lblValorTotal.setText(String.valueOf(x.getPreco()*Double.parseDouble(quantidade.getText())));
             }
         }
@@ -127,12 +122,14 @@ public class TelaPrincipalController implements Initializable {
     public void adicionarProduto(){
         double valorTotalDoPedido = 0;
         //adicionando itens na lista de compra dinamicamente
-        data.add(new Pedido(Integer.parseInt(quantidade.getText()),lblNomeProduto.getText(),
-                Double.parseDouble(lblValorTotal.getText())));
+//        data.add(new Pedido(Integer.parseInt(quantidade.getText()),lblNomeProduto.getText(),
+//                Double.parseDouble(lblValorTotal.getText())));
+
+        //data.add(new Pedido(1,(byte)1,120.2,0.0,formatoData.format(agora),1,1));
 
         // Fazendo a soma total do pedido
         for(int i = 0; i < tabelaCompras.getItems().size(); i++){
-            valorTotalDoPedido += tabelaCompras.getItems().get(i).getPreco();
+            valorTotalDoPedido += tabelaCompras.getItems().get(i).getTotalPreco();
             lblTotalDoPedido.setText(String.valueOf(valorTotalDoPedido));
         }
         lblNomeProduto.setText("");
@@ -148,6 +145,32 @@ public class TelaPrincipalController implements Initializable {
 
 
     public void cancelar(){
+    }
+
+    public void acessarDataBase(ActionEvent event) throws IOException {
+        Stage stage = null;
+        Parent root = null;
+
+        if(event.getSource() == acessarDataBase){
+            stage = (Stage) acessarDataBase.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("/FXML/telaDataBase.fxml"));
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void sair(ActionEvent event) throws IOException {
+        Stage stage = null;
+        Parent root = null;
+
+        if(event.getSource() == sair){
+            stage = (Stage) sair.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("/FXML/login.fxml"));
+        }
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
