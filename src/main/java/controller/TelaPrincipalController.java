@@ -12,9 +12,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 import model.dao.ProdutosDAO;
 import model.entities.Pedido;
+import model.entities.PedidoViewCliente;
 import model.entities.Produto;
 import java.io.IOException;
 import java.net.URL;
@@ -67,7 +69,7 @@ public class TelaPrincipalController implements Initializable {
     @FXML
     private Label lblNomeProduto;
     @FXML
-    private TableView<Pedido> tabelaCompras = new TableView<Pedido>();
+    private TableView<PedidoViewCliente> tabelaCompras = new TableView<PedidoViewCliente>();
     @FXML
     private TableColumn<Pedido,Integer> colunaQuantidade;
     @FXML
@@ -80,13 +82,13 @@ public class TelaPrincipalController implements Initializable {
 
     ArrayList<Produto> produtos = new ArrayList<Produto>();
     ProdutosDAO produtodao = new ProdutosDAO();
-
-    // ONDE OS PRODUTOS DA COMPRA FICAM ARMAZENADOS
-    ObservableList<Pedido> data = FXCollections.observableArrayList();
+    ObservableList<PedidoViewCliente> data = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         quantidade.setText("1");
+        lblTotalDoPedido.setTextAlignment(TextAlignment.CENTER);
+        lblTotalDoPedido.setWrapText(true);
         colunaQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         colunaProduto.setCellValueFactory(new PropertyValueFactory<>("produto"));
         colunaPreco.setCellValueFactory(new PropertyValueFactory<>("preco"));
@@ -99,10 +101,9 @@ public class TelaPrincipalController implements Initializable {
     }
 
     public void buscarProdutos(ActionEvent event){
-        System.out.println(agora);
         criar();
         for (Produto x: produtos) {
-            if(codigoProduto.getText().equals(x.getId())){ // talvez converter o tipo depois
+            if(codigoProduto.getText().equals(String.valueOf(x.getId()))){
                 lblNomeProduto.setText(x.getNome());
                 lblCodigo.setText(String.valueOf(x.getId()));
                 lblValorUnitario.setText(String.valueOf(x.getPreco()));
@@ -113,7 +114,7 @@ public class TelaPrincipalController implements Initializable {
 
     public void multiplicarQuantidade(){
         for (Produto x: produtos) {
-            if(codigoProduto.getText().equals(x.getId())){
+            if(codigoProduto.getText().equals(String.valueOf(x.getId()))){
                 lblValorTotal.setText(String.valueOf(x.getPreco()*Double.parseDouble(quantidade.getText())));
             }
         }
@@ -122,14 +123,12 @@ public class TelaPrincipalController implements Initializable {
     public void adicionarProduto(){
         double valorTotalDoPedido = 0;
         //adicionando itens na lista de compra dinamicamente
-//        data.add(new Pedido(Integer.parseInt(quantidade.getText()),lblNomeProduto.getText(),
-//                Double.parseDouble(lblValorTotal.getText())));
-
-        //data.add(new Pedido(1,(byte)1,120.2,0.0,formatoData.format(agora),1,1));
+        data.add(new PedidoViewCliente(Integer.parseInt(quantidade.getText()),lblNomeProduto.getText(),
+                Double.parseDouble(lblValorTotal.getText())));
 
         // Fazendo a soma total do pedido
         for(int i = 0; i < tabelaCompras.getItems().size(); i++){
-            valorTotalDoPedido += tabelaCompras.getItems().get(i).getTotalPreco();
+            valorTotalDoPedido += tabelaCompras.getItems().get(i).getPreco();
             lblTotalDoPedido.setText(String.valueOf(valorTotalDoPedido));
         }
         lblNomeProduto.setText("");
@@ -142,7 +141,6 @@ public class TelaPrincipalController implements Initializable {
 
     public void finalizarVenda(){
     }
-
 
     public void cancelar(){
     }
@@ -166,7 +164,7 @@ public class TelaPrincipalController implements Initializable {
 
         if(event.getSource() == sair){
             stage = (Stage) sair.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/FXML/login.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/FXML/telaDeControle.fxml"));
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);

@@ -1,11 +1,22 @@
 package model.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Produto {
 
+    @Id
+    @Column
     private int id;
+    @Column
     private String nome;
+    @Column
     private double preco;
+    @Column
     private String codigoBarra;
+    @Column
     private int quantidadeEstoque;
 
     public Produto(){

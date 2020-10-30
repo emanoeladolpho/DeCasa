@@ -1,14 +1,26 @@
 package model.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
-public class Compra {
+@Entity
+public class Compra{
+    @Id
+    @Column
     private int id;
+    @Column
     private byte formaPagamento;
+    @Column
     private double total_preco;
+    @Column
     private double desconto;
+    @Column
     private Date data;
+    @Column
     private int FKVendedor;
+    @Column
     private int FKCliente;
 
     public Compra(){

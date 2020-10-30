@@ -1,9 +1,18 @@
 package model.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Cliente {
 
+    @Id
+    @Column
     private int id;
+    @Column
     private String nome;
+    @Column
     private String cpf;
 
     public Cliente(){

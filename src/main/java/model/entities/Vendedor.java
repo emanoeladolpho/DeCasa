@@ -1,12 +1,18 @@
 package model.entities;
 
-public class Vendedor {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
+public class Vendedor{
+    @Id
+    @Column
     private String id;
+    @Column
     private String nome;
 
     public Vendedor(){
-
     }
 
     public Vendedor(String id, String nome) {

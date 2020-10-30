@@ -1,21 +1,32 @@
 package model.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.text.DateFormat;
 
-public class Pedido {
+@Entity
+public class Pedido{
+    @Id
+    @Column
     private int id;
-    private byte formaPagamento;
+    @Column
+    private int formaPagamento;
+    @Column
     private double totalPreco;
+    @Column
     private double desconto;
+    @Column
     private DateFormat data;
+    @Column
     private int FKVendedor;
+    @Column
     private int FKCliente;
 
     public Pedido(){
-
     }
 
-    public Pedido(int id, byte formaPagamento, double totalPreco, double desconto, DateFormat data, int FKVendedor, int FKCliente) {
+    public Pedido(int id, int formaPagamento, double totalPreco, double desconto, DateFormat data, int FKVendedor, int FKCliente) {
         this.id = id;
         this.formaPagamento = formaPagamento;
         this.totalPreco = totalPreco;
@@ -33,11 +44,11 @@ public class Pedido {
         this.id = id;
     }
 
-    public byte getFormaPagamento() {
+    public int getFormaPagamento() {
         return formaPagamento;
     }
 
-    public void setFormaPagamento(byte formaPagamento) {
+    public void setFormaPagamento(int formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
 

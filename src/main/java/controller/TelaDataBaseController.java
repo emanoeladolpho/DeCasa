@@ -4,8 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
-
-import javax.swing.*;
+import javax.swing.JOptionPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -13,14 +12,7 @@ public class TelaDataBaseController implements Initializable {
     @FXML
     ChoiceBox acao;
     @FXML
-    private TextField idProduto;
-    @FXML
-    private TextField nomeProduto;
-    @FXML
-    private TextField precoProduto;
-    @FXML
-    private TextField codigoBarraProduto;
-
+    private TextField idProduto,nomeProduto,precoProduto,codigoBarraProduto;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -38,6 +30,10 @@ public class TelaDataBaseController implements Initializable {
             nomeProduto.setVisible(true);
             precoProduto.setVisible(true);
             codigoBarraProduto.setVisible(true);
+            idProduto.clear();
+            nomeProduto.clear();
+            precoProduto.clear();
+            codigoBarraProduto.clear();
         }else if(acao.getSelectionModel().getSelectedItem().equals("Editar")){
             idProduto.setVisible(true);
             nomeProduto.setVisible(true);
@@ -51,7 +47,6 @@ public class TelaDataBaseController implements Initializable {
             nomeProduto.setVisible(false);
             precoProduto.setVisible(false);
             codigoBarraProduto.setVisible(false);
-
             if(idProduto.getText().equals("tal")) {
                 int opcao = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja excluir o produto: " +
                         idProduto.getText() + " ?");

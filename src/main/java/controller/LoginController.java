@@ -42,7 +42,7 @@ public class LoginController {
         Parent root = null;
         if(event.getSource() == btnConfirmarLogin){
             stage = (Stage)btnConfirmarLogin.getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("/FXML/telaPrincipal.fxml"));
+            root = FXMLLoader.load(getClass().getResource("/FXML/telaDeControle.fxml"));
         }
         Scene scene = new Scene(root);
         stage.setScene(scene);
